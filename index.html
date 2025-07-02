@@ -184,5 +184,19 @@
     </footer>
     <script src="./public/js/app.js"></script>
     <script src="./public/lib/bootstrap-5.3.6-dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker
+            .register('service-worker.js')
+            .then(function (registration) {
+              console.log('Service Worker registrado con éxito:', registration);
+            })
+            .catch(function (error) {
+              console.error('Error al registrar el Service Worker:', error);
+            });
+        });
+      }
+    </script>
   </body>
 </html>
