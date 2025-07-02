@@ -1,4 +1,5 @@
 {
   "name": "Sistema de Facturación PWA",
-  "short_name": "Facturación"
+  "short_name": "Facturación",
+  "descripcion": "Aplicación de facturación de productos con soporte offline"
 }
