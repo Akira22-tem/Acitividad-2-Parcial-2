@@ -482,3 +482,24 @@ function mostrarBotonInstalacion() {
   });
   document.body.appendChild(botonInstalar);
 }
+
+// esta funcion nos ayuda a verificar la conexión y mostrar estado
+function actualizarEstadoConexion() {
+  const estadoOnline = navigator.onLine;
+  const elementoEstado = document.createElement('div');
+  elementoEstado.className = estadoOnline
+    ? 'alert alert-success'
+    : 'alert alert-danger';
+  elementoEstado.textContent = estadoOnline
+    ? '✅ En línea'
+    : '⚠️ Sin conexión (modo offline)';
+  elementoEstado.style.position = 'fixed';
+  elementoEstado.style.top = '10px';
+  elementoEstado.style.right = '10px';
+  elementoEstado.style.zIndex = '1000';
+  document.body.appendChild(elementoEstado);
+}
+
+window.addEventListener('online', actualizarEstadoConexion);
+window.addEventListener('offline', actualizarEstadoConexion);
+actualizarEstadoConexion();
