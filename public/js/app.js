@@ -462,3 +462,23 @@ window.addEventListener('beforeinstallprompt', (e) => {
   // esta parte resultaria opcionaml para mostrar un boton de instalacionde la PWA
   mostrarBotonInstalacion();
 });
+//funcion para mostrar el boton de instalar la pwa
+function mostrarBotonInstalacion() {
+  const botonInstalar = document.createElement('button');
+  botonInstalar.textContent = 'Instalar App';
+  botonInstalar.className = 'btn btn-primary';
+  botonInstalar.style.position = 'fixed';
+  botonInstalar.style.bottom = '20px';
+  botonInstalar.style.right = '20px';
+  botonInstalar.style.zIndex = '1000';
+
+  botonInstalar.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log(`User response to the install prompt: ${outcome}`);
+      deferredPrompt = null;
+    }
+  });
+  document.body.appendChild(botonInstalar);
+}
